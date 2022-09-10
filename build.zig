@@ -752,11 +752,7 @@ const ZiglingStep = struct {
             return err;
         };
         const build_output_dir = std.mem.trimRight(u8, output_dir_nl, "\r\n");
-
-        const target_info = std.zig.system.NativeTargetInfo.detect(
-            builder.allocator,
-            .{},
-        ) catch unreachable;
+        const target_info = std.zig.system.NativeTargetInfo.detect(.{}) catch unreachable;
         const target = target_info.target;
 
         const file_name = std.zig.binNameAlloc(builder.allocator, .{
